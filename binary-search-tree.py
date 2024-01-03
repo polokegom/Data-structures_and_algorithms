@@ -69,6 +69,8 @@ class BinarySearchTree:
 if __name__ == "__main__":
     bfs = BinarySearchTree();
     bfs.createNewNode(40);
+    bfs.createNewNode(30);
+
     print();
     print("Nodes that exists: ");
     print(bfs.searchForNode(30))
