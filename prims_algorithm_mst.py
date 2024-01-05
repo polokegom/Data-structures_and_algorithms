@@ -22,38 +22,61 @@ class Graph:
         ''''''
         if (self.startNode == None):
             self.startNode = vec1;
-        self.startNode.nextVertex.push( Edge(edge, vec2));    
+        vec1.nextVertex.append( Edge(edge, vec2));    
     
     def printMinSpanningTree(self):
         ''''''
 
     def printGraph(self):
         ''''''
-        tempNode = self.baseNode;
+        tempNode = self.startNode;
 
         #Transversal code
         pastVertices = []
         liveVertices = []
-        liveVertices.push(tempNode);
+        liveVertices.append(tempNode);
         nextVertices = []
         while (liveVertices):
             printGraph = '';
             nextVertices.clear();
             for presentVertex in liveVertices:
                 ''''''
-
-                printGraph = ' (Head):';
-                pastVertices.push(presentVertex); 
-                for nextVertex in  liveVertices.vertex2:
-                    if (pastVertices in nextVertex):
-                        nextVertices.push(nextVertex);
-                    printGraph += ' ' +  nextVertex.data +  ' (tail; Edge:' + nextVertex.edge + '), ';
-                
-                printGraph = printGraph[:-2]  + "\n";
-                print(printGraph);
+                if (presentVertex.nextVertex != []):
+                    printGraph = '['+ str(presentVertex.storage) + '] (Head)=>';
+                    pastVertices.append(presentVertex); 
+                    for next in  presentVertex.nextVertex:
+                        if ((not next.vertex2 in pastVertices) and (next.vertex2 != None)):
+                            nextVertices.append(next.vertex2);
+                        printGraph += ' [' +  next.vertex2.storage +  '] (tail; Edge:' + str(next.edge) + '), ';
+                    
+                    printGraph = printGraph[:-2];
+                    print(printGraph);
             liveVertices.clear();
             liveVertices += nextVertices;
 
                 
 
+if __name__ == "__main__":
+    a = Vertex("A");
+    b = Vertex("B");
+    c = Vertex("C");
+    d = Vertex("D");
+    e = Vertex("E");
+    f = Vertex("F");
+    print("Finished loading Vertex...");
+    graph = Graph();
+    graph.addNewEdge(a,b,3);
+    graph.addNewEdge(b,c,2);
+    graph.addNewEdge(a,c,4);
 
+
+    print("Finished loading Graph...");
+    print("Edges of Graph:")
+    print()
+   
+    graph.printGraph();
+
+
+
+
+   
