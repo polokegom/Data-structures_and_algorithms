@@ -109,31 +109,7 @@ class Graph:
                     print(printGraph);
             liveVertices.clear();
             liveVertices += nextVertices;
-    '''
-    def kruskal(self):
-        # Sort all the edges in non-decreasing order of their weight
-        sorted_edges = sorted(self.allEdges, key=lambda x: x.edge)
 
-        # Initialize disjoint sets for each vertex
-        disjoint_sets = {vertex: {vertex} for vertex in [edge.vertex for edge in self.allEdges]}
-
-        # Initialize the minimum spanning tree
-        minimum_spanning_tree = []
-
-        for edge in sorted_edges:
-            set1 = next((s for s in disjoint_sets.values() if edge.vertex in s), set())
-            set2 = next((s for s in disjoint_sets.values() if edge.vertex2 in s), set())
-
-            if set1 != set2:
-                # If adding this edge doesn't form a cycle, add it to the minimum spanning tree
-                minimum_spanning_tree.append(edge)
-                # Merge the disjoint sets of the two vertices connected by this edge
-                new_set = set1.union(set2)
-                for vertex in new_set:
-                    disjoint_sets[vertex] = new_set
-
-        return minimum_spanning_tree
-        '''
                 
 
 if __name__ == "__main__":
